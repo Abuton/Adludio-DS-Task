@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <h1> Creative Recommendation Engine </h1>
+
+    <head>
+        <title>Basic Form and Results</title>
+        <link rel="stylesheet" href="./css/css.css">
+        <script src="./js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" type="text/css" href="./css/jquery.datetimepicker.css"/ >
+        <script src="./js/moment.min.js"></script>
+
+        <link rel="stylesheet" href="./css/jquery-ui.css">
+        <link rel="stylesheet" href="./css/jquery-ui.theme.css">
+        <script src="./js/jquery-ui.js"></script>
+    </head>
+<body>
+
+
+<form id="api_access" action="javascript:void(0);">   
+<label for='target_group'>Target group</label><select name='target_group'> 
+<option value='Arts & Entertainment & Books & Literature' >Arts & Entertainment & Books & Literature </option>
+<option value='Autos' >Autos </option>
+<option value='Beauty' >Beauty</option>
+<option value='Fitness & Health' >Fitness & Health</option>
+<option value='Business & Finance' >Business & Finance</option>
+<option value='Computers & Technology' >Computers & Technology</option>
+<option value='Education' >Education </option>
+<option value='Fashion' >Fashion </option>
+<option value='Food & Drinks' >Food & Drinks</option>
+<option value='Games' >Games</option>
+<option value='Home & Garden' >Home & Garden</option>
+<option value='Parenting & Family' >Parenting & Family</option>
+<option value='Pets & Animals' >Pets & Animals</option>
+<option value='Real Estate' >Real Estate</option>
+<option value='Uncategorized' >Uncategorized</option>
+<option value='Shopping' >Shopping</option>
+<option value='Sports' >Sports</option>
+<option value='Travel' >Travel</option>
+<option value='Law & Government Local News' >Law & Government Local News</option>
+<option value='People' >People</option>
+<option value='Society & Online Communities Energy' >Society & Online Communities Energy</option>
+</select><br>
+<label for='vertical'>Vertical</label><select name='vertical'>
+<option value='Arts & Entertainment & Books & Literature' >Arts & Entertainment & Books & Literature </option>
+<option value='Autos' >Autos </option>
+<option value='Beauty' >Beauty</option>
+<option value='Fitness & Health' >Fitness & Health</option>
+<option value='Business & Finance' >Business & Finance</option>
+<option value='Computers & Technology' >Computers & Technology</option>
+<option value='Education' >Education </option>
+<option value='Fashion' >Fashion </option>
+<option value='Food & Drinks' >Food & Drinks</option>
+<option value='Games' >Games</option>
+<option value='Home & Garden' >Home & Garden</option>
+<option value='Parenting & Family' >Parenting & Family</option>
+<option value='Pets & Animals' >Pets & Animals</option>
+<option value='Real Estate' >Real Estate</option>
+<option value='Uncategorized' >Uncategorized</option>
+<option value='Shopping' >Shopping</option>
+<option value='Sports' >Sports</option>
+<option value='Travel' >Travel</option>
+<option value='Law & Government Local News' >Law & Government Local News</option>
+<option value='People' >People</option>
+<option value='Society & Online Communities Energy' >Society & Online Communities Energy</option>
+</select><br>
+<label for='region'>Region</label><select name='region'>
+<option value='Africa' >Africa</option>
+<option value='Americas'>Americas</option>
+<option value='Asia' >Asia</option>
+<option value='Europe' >Europe</option>
+<option value='Oceania' >Oceania</option>
+</select><br>
+<label for='season'>Season</label><select name='season'>
+<!-- <option value='/' selected>/ </option> -->
+<option value='Winter' >Winter</option>
+<option value='Spring'>Spring</option>
+<option value='Summer' >Summer</option>
+<option value='Autumn' >Autumn</option>
+</select><br>
+<label for='campaign_objective'>Campaign objective</label><select name='campaign_objective'>
+<option value='engagement_rate' selected>Engagement rate</option>
+<option value='click_through_rate' >Click-through rate</option>
+</select><br>
+
+
+<input type='button' class='submit' 
+onclick='submit_form(this)' value='Get 10 Best Performing Ads'>
+
+<div id='results'></div>
+
+<script>
+var BASE_URL = 'http://' + window.location.hostname +':8888/'
+
+// extract all relevant form data from a form
+function get_form_data(form_elem){
+
+    var FormData = {}
+
+    $(form_elem).find('select').each(
+        function(index){
+            var input = $(this);
+            if (input.attr('name')){
+                FormData[input.attr('name')] = [input.val()];
+            }
+        }
+    );
+
+    $(form_elem).find('input').each(
+        function(index){
+            var input = $(this);
+            if (input.attr('name')){
+                FormData[input.attr('name')] = [input.val()];
+            }
+    });  
+    return FormData;
+}
+
+var tt;
+function submit_form(elem){
+    var url = BASE_URL +'get_neighbors';
+    var form_id = $(elem.form).attr('id')
+    var data_ = get_form_data(elem.form);
+    tt = data_;
+    //display_results({"0":"0"});
+
+    console.log(JSON.stringify(data_));
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(data_),
+        success: function( res ) {
+        // process data
+        tt = JSON.parse(res);
+        display_results(JSON.parse(res).recommendations);
+        }
+    });
+}
+
+function display_results(res){
+    str_res = ''
+    for (rec in res) {
+        //if res[rec] == "Sorry, we don't have enough data for this query at the moment." {
+        //   str_res = res[rec]
+        //}
+        cats = res[rec].split(';')
+        for (cat in cats) {
+            if (cat == 0) {
+                idx_url = cats[cat].split(' ')
+                str_res += idx_url[0] + '<br/>'
+                str_res += '<a href="' + idx_url[1] + '">' + idx_url[1] + '</a>' + '<br/>'
+            } else {
+                str_res += cats[cat] + '<br/>'
+            }
+        }
+        str_res += '<br/><br/><br/><br/>'
+    }
+    $('#results').html(str_res)
+    // $('#results').html(JSON.stringify(res))
+}
+
+</script> 
+

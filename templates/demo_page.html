@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <h1> Creative Recommendation Engine </h1>
+
+    <head>
+        <title>Creative Recommendation Engine</title>
+        <link rel="stylesheet" href="./css/css.css">
+        <script src="./js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" type="text/css" href="./css/jquery.datetimepicker.css"/ >
+        <script src="./js/moment.min.js"></script>
+
+        <link rel="stylesheet" href="./css/jquery-ui.css">
+        <link rel="stylesheet" href="./css/jquery-ui.theme.css">
+        <script src="./js/jquery-ui.js"></script>
+    </head>
+
+    <body>
+
+    <div id='rec_form_interface' class='sidenav'>
+
+        <form id="api_access" action="javascript:void(0);">   
+            <label for='target_group'>target_group</label>
+            <select name='target_group'> 
+                <option value='Arts & Entertainment & Books & Literature' >Arts & Entertainment & Books & Literature </option>
+                <option value='Autos' >Autos </option>
+                <option value='Beauty' >Beauty</option>
+                <option value='Fitness & Health' >Fitness & Health</option>
+                <option value='Business & Finance' >Business & Finance</option>
+                <option value='Computers & Technology' >Computers & Technology</option>
+                <option value='Education' >Education </option>
+                <option value='Fashion' >Fashion </option>
+                <option value='Food & Drinks' >Food & Drinks</option>
+                <option value='Games' >Games</option>
+                <option value='Home & Garden' >Home & Garden</option>
+                <option value='Parenting & Family' >Parenting & Family</option>
+                <option value='Pets & Animals' >Pets & Animals</option>
+                <option value='Real Estate' >Real Estate</option>
+                <option value='Uncategorized' >Uncategorized</option>
+                <option value='Shopping' >Shopping</option>
+                <option value='Sports' >Sports</option>
+                <option value='Travel' >Travel</option>
+                <option value='Law & Government Local News' >Law & Government Local News</option>
+                <option value='People' >People</option>
+                <option value='Society & Online Communities Energy' >Society & Online Communities Energy</option>
+            </select> <br>
+
+            <label for='vertical'>vertical</label>
+            <select name='vertical'>
+                <option value='Arts & Entertainment & Books & Literature' >Arts & Entertainment & Books & Literature </option>
+                <option value='Autos' >Autos </option>
+                <option value='Beauty' >Beauty</option>
+                <option value='Fitness & Health' >Fitness & Health</option>
+                <option value='Business & Finance' >Business & Finance</option>
+                <option value='Computers & Technology' >Computers & Technology</option>
+                <option value='Education' >Education </option>
+                <option value='Fashion' >Fashion </option>
+                <option value='Food & Drinks' >Food & Drinks</option>
+                <option value='Games' >Games</option>
+                <option value='Home & Garden' >Home & Garden</option>
+                <option value='Parenting & Family' >Parenting & Family</option>
+                <option value='Pets & Animals' >Pets & Animals</option>
+                <option value='Real Estate' >Real Estate</option>
+                <option value='Uncategorized' >Uncategorized</option>
+                <option value='Shopping' >Shopping</option>
+                <option value='Sports' >Sports</option>
+                <option value='Travel' >Travel</option>
+                <option value='Law & Government Local News' >Law & Government Local News</option>
+                <option value='People' >People</option>
+                <option value='Society & Online Communities Energy' >Society & Online Communities Energy</option>
+            </select><br>
+
+            <label for='region'>region</label>
+            <select name='region'>
+                <option value='Arts & Entertainment & Books & Literature' >Arts & Entertainment & Books & Literature </option>
+                <option value='Autos' >Autos </option>
+                <option value='Beauty' >Beauty</option>
+                <option value='Fitness & Health' >Fitness & Health</option>
+                <option value='Business & Finance' >Business & Finance</option>
+                <option value='Computers & Technology' >Computers & Technology</option>
+                <option value='Education' >Education </option>
+                <option value='Fashion' >Fashion </option>
+                <option value='Food & Drinks' >Food & Drinks</option>
+                <option value='Games' >Games</option>
+                <option value='Home & Garden' >Home & Garden</option>
+                <option value='Parenting & Family' >Parenting & Family</option>
+                <option value='Pets & Animals' >Pets & Animals</option>
+                <option value='Real Estate' >Real Estate</option>
+                <option value='Uncategorized' >Uncategorized</option>
+                <option value='Shopping' >Shopping</option>
+                <option value='Sports' >Sports</option>
+                <option value='Travel' >Travel</option>
+                <option value='Law & Government Local News' >Law & Government Local News</option>
+                <option value='People' >People</option>
+                <option value='Society & Online Communities Energy' >Society & Online Communities Energy</option>
+            </select><br>
+
+            <label for='geographic_region'>geographic_region</label>
+            <select name='geographic_region'>
+                <option value='Africa' >Africa</option>
+                <option value='Americas'>Americas</option>
+                <option value='Asia' >Asia</option>
+                <option value='Europe' >Europe</option>
+                <option value='Oceania' >Oceania</option>
+            </select><br>
+
+            <label for='season'>season</label>
+            <select name='season'>
+                <option value='Winter' >Winter</option>
+                <option value='Spring'>Spring</option>
+                <option value='Summer' >Summer</option>
+                <option value='Autumn' >Autumn</option>
+            </select><br>
+
+            <label for='campaign_objective'>campaign_objective</label>
+            <select name='campaign_objective'>
+                <option value='engagement_rate'>Engagement rate</option>
+                <option value='click_through_rate' >Click-through rate</option>
+            </select><br>
+        
+
+            <input type='button' class='submit' onclick='submit_form(this)' value='Get 10 Best Performing Ads'>
+         </form>
+    </div>
+
+        <div id='results2'></div>
+
+
+
+<div id='results_panel'>
+    <div id='results'>Here go the example link <iframe src='https://wat.adludio.com/games/c191ee99ff67f39c00644e3e44a27a70/d2e26088d9e1f17dbd4c/index.html' title="GameID?">></iframe>
+
+    </div>
+
+    <div id='iframe'>Here go the example link <iframe src='https://wat.adludio.com/games/adunit-mcdonalds-happymeal-book-fr-mob/61cdd1d42e34e8ab8c66/index.html' title="GameID?">></iframe>
+
+    </div>
+
+    <div id='wire_frames'></div>
+
+    <div id='example_creative'></div>
+
+</div>
+
+
+</body>
+
+<script>
+    
+var BASE_URL = 'http://' + window.location.hostname +':{{ port }}/';
+
+var manual_res = {
+    '1': {
+        'url': 'https://preview.adludio.com/2792465c1d612933d82798829ed1f5d9/817c5e7f53433864282a',
+        'Engagement rate': '53%',
+        'Click-through rate': '7%',
+        'Impressions': '93300',
+        'Engagements': '49800',
+        'Click-through': '6500',
+        'Countries': '["Hong Kong"]',
+        'Adunit area width': '600.0',
+        'Adunit area height': '900.0',
+        'Engagement area width': '600.0',
+        'Engagement area height': '900.0',
+        'Engagement area horizontal distance from top left': '0.0',
+        'Engagement area vertical distance from top left': '0.0',
+        'Click-through icon width': '339.0',
+        'Click-through icon height': '80.0',
+        'Click-through icon horizontal distance from top left': '131.0',
+        'Click-through icon vertical distance from top left': '797.0'
+    }
+}
+
+// extract all relevant form data from a form
+function get_form_data(form_elem){
+
+    var FormData = {}
+
+    $(form_elem).find('select').each(
+        function(index){
+            var input = $(this);
+            if (input.attr('name')){
+                FormData[input.attr('name')] = [input.val()];
+            }
+        }
+    );
+
+    $(form_elem).find('input').each(
+        function(index){
+            var input = $(this);
+            if (input.attr('name')){
+                FormData[input.attr('name')] = [input.val()];
+            }
+    });  
+    return FormData;
+}
+
+var tt;
+var d;
+function submit_form(elem){
+    var url = BASE_URL +'recommend_sort_games';
+    var form_id = $(elem.form).attr('id')
+    var data_ = get_form_data(elem.form);
+    d = data_;
+
+    console.log(JSON.stringify(data_));
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(data_),
+        success: function( res ) {
+        // process data
+        tt = JSON.parse(res);
+        display_results(JSON.parse(res));
+        console.log("It's a success!")
+        },
+        error: function (res) {
+            console.log('error');
+        }
+    });
+}
+
+function display_results(res){
+    $('#results').html(JSON.stringify(res))
+}
+
+var tt
+function list_searchable_parameters(){
+    var url = BASE_URL +'list_searchable_parameters';
+    console.log(url);
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: function( res ) {
+        // process data
+        tt = JSON.parse(res);
+        populate_form(JSON.parse(res));
+        console.log("It's a success!");
+        },
+        error: function (res) {
+        }
+    });
+}
+
+// auto generate a form, based on current data
+function populate_form(data){
+    // replace form_html with **dynamically generated*** html
+    // based on keys and values.
+    var form_html = JSON.stringify(data);
+
+    // form_html = "<label for='season'>season</label><select name='season'> ";
+    // form_html += "<option value='Summer' >Summer </option>";
+    // form_html += "<option value='Winter' >Winter </option></select>";
+
+    //----- your code here: hint, use for-loops!
+    for (var i = data.keys().length - 1; i >= 0; i--) {
+        form_html = "<label for='data[i][0]>data[i][0]</label><select name=data[i][0]> "
+    }
+    //==== leave this line here! otherwise we cannot submit the form!==== 
+    form_html  += "<input type='button' class='submit' onclick='submit_form(this)' value='Get Best Performing Ads'>";
+ 
+
+    // now populate the form
+    $('#api_access').html(form_html);
+
+}
+
+$( document ).ready(function() {
+    list_searchable_parameters()
+});
+
+</script> 
