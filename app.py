@@ -76,8 +76,7 @@ def basic_demo2():
 @app.route('/list_searchable_parameters', methods=['GET'])
 def list_searchable_parameters():
     """ returns a plain text of charset='utf-8'
-        with inputs and target to be dynamically filled
-        in an html page
+        with inputs and target as a key:value pair
     """
     # output 'here' with the help of file=sys.stdout
     print('here', file=sys.stdout)
