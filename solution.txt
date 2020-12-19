@@ -1,0 +1,17 @@
+Task 1
+
+I made changes to the demo_page.html, used a loop to dynamically populate the selectbox texts
+
+Task 2
+
+solution can be located in folder "Task 2 Solution", two (2) images with flowchart diagram explaining how functions are called and what they return
+
+Task 3
+
+solution is located in the folder "test/test_set1.py", added some unittest codes to the file
+
+Task 4
+
+solution is located in the folder "Task 4 Solution", a jupyter notebook file explaining correlation analysis
+
+Thank You
