@@ -1,16 +1,25 @@
 try:
 
+	import sys, os
+	sys.path.append(os.path.abspath(os.path.join('..')))
+
 	import unittest
-	from app import app
 	import numpy as np
 	from numpy.testing import assert_almost_equal, assert_equal, assert_string_equal
 	from numpy.testing import assert_allclose, assert_raises, assert_raises_regex
+	from app import app
 except Exception as e:
 	print('Some modules are missing {}'.format(e))
+	
 
 class FlaskTestCase(unittest.TestCase):
 	"""docstring for FlaskTestCase
-		A class for unit-testing some function/method in the app.py file
+		A class for unit-testing some of the function/method in the 
+		app.py file
+
+		Args:
+			unittest.TestCase this allows the new class to inherit
+			from the unittest module
 	"""
 	
 	# check status code for the home page at route (/demo1)
@@ -28,7 +37,7 @@ class FlaskTestCase(unittest.TestCase):
 		self.assertEqual(response.content_type, 'text/plain;charset=utf-8')
 
 
-	# check for data present
+	# check if data present
 	def test_data_return(self):
 		tester = app.test_client(self)
 		response = tester.get('/list_searchable_parameters')
@@ -44,8 +53,6 @@ class FlaskTestCase(unittest.TestCase):
 		tester = app.test_client(self)
 		response = tester.get('/')
 		self.assertEqual(isinstance(html, str), True)
-
-
     
 if __name__ == '__main__':
 	unittest.main()
