@@ -254,10 +254,12 @@ function populate_form(data){
     // form_html += "<option value='Winter' >Winter </option></select>";
 
     //----- your code here: hint, use for-loops!
+    "<select>"
     for (var i = data.keys().length - 1; i >= 0; i--) {
-        form_html = "<label for='data.keys()[i]'>data.keys()[i]</label><select name='data.keys()[i]'> "
-        form_html += "<option value='data[i]'></option></select>"
+        form_html = "<label for='data.keys()[i]'>data.keys()[i]</label>"
+        form_html += "<option value='data[i]'></option>"
     }
+    "</select>"
     //==== leave this line here! otherwise we cannot submit the form!==== 
     form_html  += "<input type='button' class='submit' onclick='submit_form(this)' value='Get Best Performing Ads'>";
  
